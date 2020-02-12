@@ -9,3 +9,5 @@ exports[`the button component should render correctly 1`] = `
   </button>
 </DocumentFragment>
 `;
+
+exports[`the button component should verify the type of button passed to the component 1`] = `undefined`;
