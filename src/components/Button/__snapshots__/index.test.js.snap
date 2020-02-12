@@ -9,3 +9,24 @@ exports[`the button component should render correctly 1`] = `
   </button>
 </DocumentFragment>
 `;
+
+exports[`the button component should render correctly as rectangle button 1`] = `
+<DocumentFragment>
+  <button
+    data-testid="test-btn"
+  >
+    Test text
+  </button>
+</DocumentFragment>
+`;
+
+exports[`the button component should render correctly as round button 1`] = `
+<DocumentFragment>
+  <button
+    data-testid="test-btn"
+    style="border-radius: 50%;"
+  >
+    Test text
+  </button>
+</DocumentFragment>
+`;
