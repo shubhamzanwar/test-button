@@ -26,4 +26,12 @@ describe('the button component', () => {
     expect(buttonType).toMatchSnapshot();
   });
 
+  it('should verify the type of button passed (round) to the component', () => {
+    const onClickMock = jest.fn();
+    const { buttonType } = render(<Button testID="test-btn" buttonType="round" onClick={onClickMock} />);
+
+    expect(buttonType).toMatchSnapshot();
+
+});
+
 });
