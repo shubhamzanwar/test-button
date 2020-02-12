@@ -1,3 +1,11 @@
-const App = () => null;
+import React from 'react'
 
-export default App;
+function App() {
+    return (
+        <div>
+            <Container/>
+        </div>
+    )
+}
+
+export default App

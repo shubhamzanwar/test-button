@@ -5,6 +5,7 @@ import '../index.css';
 
 
 describe('the button component', () => {
+
   it('should render correctly', () => {
     const { asFragment } = render(<Button testID="test-btn">Test text</Button>);
 
@@ -32,6 +33,5 @@ describe('the button component', () => {
 
     expect(buttonType).toMatchSnapshot();
 
-});
-
+  })
 });
