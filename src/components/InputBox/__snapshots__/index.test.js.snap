@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`the inputBox component should render correctly 1`] = `
+<DocumentFragment>
+  <input
+    type="text"
+  />
+</DocumentFragment>
+`;

@@ -29,4 +29,11 @@ describe('the button component', () => {
 
     });
 
+    it('should display change in click count state', () => {
+        const onClickMock = jest.fn();
+        const { getByTestId } = render(<Button testID="test-btn" type="rect" onClick={onClickMock}>Roh</Button>);
+        fireEvent.click(getByTestId("test-btn"));
+        expect(getByTestId('test-btn')).toHaveTextContent("Roh clicked 0 times")
+    });
+
 })

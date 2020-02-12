@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`the container component should render correctly 1`] = `
+<DocumentFragment>
+  <div>
+    <input
+      type="text"
+    />
+    <button
+      data-testid="test-btn"
+    >
+       clicked 0 times
+    </button>
+  </div>
+</DocumentFragment>
+`;
