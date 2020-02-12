@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button} from './index';
+import Button from './index';
 import { render, fireEvent } from '@testing-library/react';
 
 describe('the button component', () => {
@@ -15,5 +15,16 @@ describe('the button component', () => {
 
         fireEvent.click(getByTestId("test-btn"));
         expect(onClickMock).toHaveBeenCalledWith();
+    });
+
+    it('should render the className of the button based on the prop type', () => {
+        const { asFragment, getByTestId } = render(<Button type="rect" testID="test-btn" >Test text</Button>);
+
+        expect(asFragment()).toMatchSnapshot();
+    });
+    it('should render the className of the button based on the prop type', () => {
+        const { asFragment, getByTestId } = render(<Button type="rounded" testID="test-btn" >Test text</Button>);
+
+        expect(asFragment()).toMatchSnapshot();
     });
 })

@@ -9,3 +9,23 @@ exports[`the button component should render correctly 1`] = `
   </button>
 </DocumentFragment>
 `;
+
+exports[`the button component should render the className of the button based on the prop type 1`] = `
+<DocumentFragment>
+  <button
+    data-testid="test-btn"
+  >
+    Test text
+  </button>
+</DocumentFragment>
+`;
+
+exports[`the button component should render the className of the button based on the prop type 2`] = `
+<DocumentFragment>
+  <button
+    data-testid="test-btn"
+  >
+    Test text
+  </button>
+</DocumentFragment>
+`;

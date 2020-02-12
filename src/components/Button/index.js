@@ -1,7 +1,12 @@
 import React from 'react';
+import * as styles from './index.module.css';
 
-export const Button = ({children, testID, onClick}) => (
-    <button data-testid={testID} onClick={() => onClick()}>
+const Button = ({children, testID, onClick, type}) => {
+    const style = type === 'rect'? styles.rect : styles.round;
+    return (
+    <button className = {style} data-testid={testID} onClick={() => onClick()}>
         {children}
-    </button>
-);
+    </button>);
+}
+
+export default Button;

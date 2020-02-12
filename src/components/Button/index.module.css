@@ -1,0 +1,15 @@
+.rect{
+    height: 1rem;
+    width: 1rem;
+    border: 1;
+    color: white;
+    background-color: black;
+}
+.rounded{
+    height: 1rem;
+    width: 1rem;
+    border: 1;
+    color: white;
+    background-color: black;
+    border-radius: 50%;
+}
