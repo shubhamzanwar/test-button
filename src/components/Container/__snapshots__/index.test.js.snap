@@ -4,6 +4,7 @@ exports[`the container component should render correctly 1`] = `
 <DocumentFragment>
   <div>
     <input
+      data-testid="test-input"
       type="text"
     />
     <button

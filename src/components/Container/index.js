@@ -18,10 +18,10 @@ class Container extends React.Component {
     }
 
     render() {   
-        const {inputText, getTextOfInputBox} = this.state;      
+        const {inputText} = this.state;      
         return (
             <div>
-                <InputBox onChange={getTextOfInputBox}></InputBox>
+                <InputBox testID="test-input" onChange={(text) => this.getTextOfInputBox(text)}></InputBox>
                 <Button testID="test-btn" type="round">{inputText}</Button>
             </div>
         )}

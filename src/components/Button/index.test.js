@@ -33,7 +33,7 @@ describe('the button component', () => {
         const onClickMock = jest.fn();
         const { getByTestId } = render(<Button testID="test-btn" type="rect" onClick={onClickMock}>Roh</Button>);
         fireEvent.click(getByTestId("test-btn"));
-        expect(getByTestId('test-btn')).toHaveTextContent("Roh clicked 0 times")
+        expect(getByTestId('test-btn')).toHaveTextContent("Roh clicked 1 times")
     });
 
 })
