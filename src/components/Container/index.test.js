@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { render, fireEvent, cleanup, wait } from '@testing-library/react';
+import { render, fireEvent, cleanup } from '@testing-library/react';
 import Container from '../Container';
 import {EXTERNAL_API} from '../../constants/urls';
 
@@ -26,15 +26,16 @@ describe('The container component',()=>{
 
     });
 
-    it('should make an api call and pre-fill the value in the input and button', async () => {
+    it('should make an api call and pre-fill the value in the input and button', async (done) => {
         const {getByTestId}=render(<Container testId='test-cntner' testIdButton='test-btn' testIdTextBox='123'/>);
         const input = getByTestId('123');
         const button = getByTestId('test-btn');
         
-        await wait(() => {
+        setImmediate(() => {
             expect(axios.get).toHaveBeenCalledWith(EXTERNAL_API);
             expect(input.value).toEqual('test-initial-value');
             expect(button).toHaveTextContent(/test-initial-value/);
+            done();
         });
     })
 })
