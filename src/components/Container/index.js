@@ -1,32 +1,36 @@
-import React from 'react';
-import {Button} from '../Button';
-import {InputBox} from '../InputBox';
+import React, { Component } from 'react';
+import Button from '../Button';
+import TextBox from '../TextBox';
+import axios from 'axios';
+import url from '../../constants/url'
 
-class Container extends React.Component {
-
-    constructor(props){
-        super(props);
-        this.state = {
-            inputText: ''
-        }
+class Container extends Component {
+    state={
+        text:''
     }
 
-    getTextOfInputBox = (text) => {
+    componentDidMount = async() => {
+        const res = await axios.get(url.initialTextLink);
         this.setState({
-            inputText: text
+            text: res.data.initialText
         })
     }
 
-    render() {   
-        const {inputText} = this.state;      
-        return (
-            <div>
-                <InputBox testID="test-input" onChange={(text) => this.getTextOfInputBox(text)}></InputBox>
-                <Button testID="test-btn" type="round" onClick={() => {}}>{inputText}</Button>
-            </div>
-        )}
+    onChange=(inputTextValue)=>{
+        this.setState({
+            text:inputTextValue
+        })
+    }
 
+    render() {
+        const {testId,testIdButton,testIdTextBox}=this.props;
+        return (
+            <div data-testid={testId}>
+                <TextBox text={this.state.text} onChange={(this.onChange)} testId={testIdTextBox} />
+                <Button text={this.state.text} buttonType="round" testId={testIdButton}/>
+            </div>
+        )
+    }
 }
 
-export {Container};
-
+export default Container

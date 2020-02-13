@@ -1,17 +1,31 @@
 import React from 'react';
-import {Container} from './index';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, wait } from '@testing-library/react';
+import Container from '../Container';
+import axios from 'axios';
+import url from '../../constants/url'
 
+jest.mock('axios', () => ({
+    get: jest.fn(() =>({data: {"initialText":"unicorn"}}))
+}));
 
-describe('the container component', () => {
-    it('should render correctly', () => {
-        const { asFragment } = render(<Container></Container>);
+describe('The container component',()=>{
+    it('should be rendered correctly',()=>{
+        const {asFragment}=render(<Container testId='test-cntner'/>)
         expect(asFragment()).toMatchSnapshot();
     });
 
-    it('should display the text entered in the input box in the button', () => {
-        const {getByTestId} = render(<Container></Container>);
-        fireEvent.change(getByTestId("test-input"),{ target: { value:"Roh"}});
-        expect(getByTestId('test-btn')).toHaveTextContent("Roh clicked 0 times")
-    });
-});
+    it('should pass the input text entered to the button',()=>{
+        const {getByTestId}=render(<Container testId='test-cntner' testIdButton='test-btn' testIdTextBox='123'/>)
+        fireEvent.change(getByTestId('123'),{target:{value:'Bhumika'}});
+        expect(getByTestId('test-btn')).toHaveTextContent('Bhumika clicked 0 times.');
+
+    })
+
+    it('should display the content from axios.get in the button', async()=>{
+        const {getByTestId}=render(<Container testId='test-cntner' testIdButton='test-btn' testIdTextBox='123'/>)
+        expect(axios.get).toHaveBeenCalledWith(url.initialTextLink);
+        await wait(() => expect(getByTestId('test-btn')).toHaveTextContent('unicorn'));
+
+    })
+
+})
