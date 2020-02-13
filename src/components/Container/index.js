@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Button from '../Button';
-import TextBox from '../../TextBox';
+import TextBox from '../TextBox';
 
 class Container extends Component {
     state={
