@@ -3,6 +3,7 @@ import { render, fireEvent } from '@testing-library/react';
 import TextBox from './index';
 
 describe('The TextBox component',()=>{
+    
     it('should render correctly',()=>{
         const { asFragment } = render(<TextBox testId="123"/>);
         expect(asFragment()).toMatchSnapshot();
