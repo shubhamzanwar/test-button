@@ -1,36 +1,29 @@
-import React from 'react';
-import * as styles from './index.module.css'
+import React, { Component } from 'react'
+import * as styles from './index.css';
 
-class Button extends React.Component{
+class Button extends Component {
 
-    constructor(props) {
-        super(props)
-        this.state = {
-            clickCount: 0
-        }
-    }
+  state={
+    count:0
+  }
 
-    increment = () => {
-        this.setState({
-            clickCount: this.state.clickCount + 1
-        })
-    }
+  countHandler = () => {
+    const {click}=this.props;
+    this.setState({
+      count:this.state.count + 1
+    },
+    click);
+  }
 
-    render () {
-        const {children, testID, onClick, type} = this.props;
-        return(
-            <button className ={
-                type === 'rect'? styles.rect : styles.round} 
-                data-testid={testID} 
-                onClick={
-                    () => { 
-                        onClick() 
-                        this.increment()
-                }}
-            >
-                {children} clicked {this.state.clickCount} times
-            </button> 
-        )}
+  render() {
+    const {text,buttonType,testId}=this.props;
+    return (
+      <button className={buttonType === 'rect' ? styles.rect : styles.round} data-testid={testId} onClick={() => this.countHandler()}>
+        {text} clicked {this.state.count} times.
+      </button> 
+    )
+  }
 }
 
-export {Button};
+export default Button;
+

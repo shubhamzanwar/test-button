@@ -1,16 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`the container component should render correctly 1`] = `
+exports[`The container component should check if the button component works 1`] = `
 <DocumentFragment>
-  <div>
-    <input
-      data-testid="test-input"
-      type="text"
-    />
-    <button
-      data-testid="test-btn"
-    >
-       clicked 0 times
+  <div
+    data-testid="test-cntner"
+  >
+    <div>
+      <input
+        type="text"
+      />
+    </div>
+    <button>
+       clicked 0 times.
     </button>
   </div>
 </DocumentFragment>

@@ -1,17 +1,20 @@
 import React from 'react';
-import {Container} from './index';
 import { render, fireEvent } from '@testing-library/react';
+import Container from '../Container';
 
-
-describe('the container component', () => {
-    it('should render correctly', () => {
-        const { asFragment } = render(<Container></Container>);
+describe('The container component',()=>{
+    it('should check if the button component works',()=>{
+        const {asFragment}=render(<Container testId='test-cntner'/>)
         expect(asFragment()).toMatchSnapshot();
     });
 
-    it('should display the text entered in the input box in the button', () => {
-        const {getByTestId} = render(<Container></Container>);
-        fireEvent.change(getByTestId("test-input"),{ target: { value:"Roh"}});
-        expect(getByTestId('test-btn')).toHaveTextContent("Roh clicked 0 times")
-    });
-});
+    it('should check if the ',()=>{
+        const {getByTestId}=render(<Container testId='test-cntner' testIdButton='test-btn' testIdTextBox='123'/>)
+
+        fireEvent.change(getByTestId('123'),{target:{value:'Bhumika'}});
+        //fireEvent.click(getByTestId('test-btn'));
+
+       expect(getByTestId('test-btn')).toHaveTextContent('Bhumika clicked 0 times.');
+
+    })
+})
