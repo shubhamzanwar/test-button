@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`The container component should check if the button component works 1`] = `
+exports[`The container component should be rendered correctly 1`] = `
 <DocumentFragment>
   <div
     data-testid="test-cntner"

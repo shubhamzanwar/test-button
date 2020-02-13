@@ -1,10 +1,19 @@
 import React, { Component } from 'react';
 import Button from '../Button';
-import TextBox from '../../TextBox';
+import TextBox from '../TextBox';
+import axios from 'axios';
+import url from '../../constants/url'
 
 class Container extends Component {
     state={
         text:''
+    }
+
+    componentDidMount = async() => {
+        const res = await axios.get(url.initialTextLink);
+        this.setState({
+            text: res.data.initialText
+        })
     }
 
     onChange=(inputTextValue)=>{

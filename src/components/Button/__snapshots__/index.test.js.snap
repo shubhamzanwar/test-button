@@ -1,5 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`the button component should render corrctly when the type:rect is passed to the component 1`] = `undefined`;
+
+exports[`the button component should render corrctly when the type:round is passed to the component 1`] = `undefined`;
+
 exports[`the button component should render correctly 1`] = `
 <DocumentFragment>
   <button>
@@ -7,7 +11,3 @@ exports[`the button component should render correctly 1`] = `
   </button>
 </DocumentFragment>
 `;
-
-exports[`the button component should verify the type of button passed (rect) to the component 1`] = `undefined`;
-
-exports[`the button component should verify the type of button passed (round) to the component 1`] = `undefined`;

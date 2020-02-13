@@ -1,20 +1,31 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, wait } from '@testing-library/react';
 import Container from '../Container';
+import axios from 'axios';
+import url from '../../constants/url'
+
+jest.mock('axios', () => ({
+    get: jest.fn(() =>({data: {"initialText":"unicorn"}}))
+}));
 
 describe('The container component',()=>{
-    it('should check if the button component works',()=>{
+    it('should be rendered correctly',()=>{
         const {asFragment}=render(<Container testId='test-cntner'/>)
         expect(asFragment()).toMatchSnapshot();
     });
 
-    it('should check if the ',()=>{
+    it('should pass the input text entered to the button',()=>{
         const {getByTestId}=render(<Container testId='test-cntner' testIdButton='test-btn' testIdTextBox='123'/>)
-
         fireEvent.change(getByTestId('123'),{target:{value:'Bhumika'}});
-        //fireEvent.click(getByTestId('test-btn'));
-
-       expect(getByTestId('test-btn')).toHaveTextContent('Bhumika clicked 0 times.');
+        expect(getByTestId('test-btn')).toHaveTextContent('Bhumika clicked 0 times.');
 
     })
+
+    it('should display the content from axios.get in the button', async()=>{
+        const {getByTestId}=render(<Container testId='test-cntner' testIdButton='test-btn' testIdTextBox='123'/>)
+        expect(axios.get).toHaveBeenCalledWith(url.initialTextLink);
+        await wait(() => expect(getByTestId('test-btn')).toHaveTextContent('unicorn'));
+
+    })
+
 })

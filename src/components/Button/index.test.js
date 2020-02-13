@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import  Button  from './index';
-import '../index.css';
+import '../Button';
 
 
 describe('the button component', () => {
@@ -20,14 +20,14 @@ describe('the button component', () => {
     expect(onClickMock).toHaveBeenCalled();
   });
 
-  it('should verify the type of button passed (rect) to the component', () => {
+  it('should render corrctly when the type:rect is passed to the component', () => {
     
     const { buttonType } = render(<Button testID="test-btn" buttonType="rect" />);
 
     expect(buttonType).toMatchSnapshot();
   });
 
-  it('should verify the type of button passed (round) to the component', () => {
+  it('should render corrctly when the type:round is passed to the component', () => {
     const onClickMock = jest.fn();
     const { buttonType } = render(<Button testID="test-btn" buttonType="round" onClick={onClickMock} />);
 
@@ -35,7 +35,7 @@ describe('the button component', () => {
 
   });
 
-  it('should verify if the count value is right or not',()=>{
+  it('should display the expected text on the button with clickCount',()=>{
     const onClickMock=jest.fn();
     const {getByTestId}=render(<Button testId="test-btn" buttonType="rect" click={onClickMock} text="Bhumika"/>);
     fireEvent.click(getByTestId("test-btn"));
