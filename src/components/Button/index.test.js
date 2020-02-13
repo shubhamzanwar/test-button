@@ -1,8 +1,9 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, cleanup } from '@testing-library/react';
 import  Button  from './index';
 import '../index.css';
 
+afterEach(cleanup);
 
 describe('the button component', () => {
 

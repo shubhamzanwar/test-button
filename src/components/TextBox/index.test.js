@@ -1,6 +1,8 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, cleanup } from '@testing-library/react';
 import TextBox from './index';
+
+afterEach(cleanup);
 
 describe('The TextBox component',()=>{
     
