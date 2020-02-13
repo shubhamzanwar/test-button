@@ -22,7 +22,7 @@ class Container extends React.Component {
         return (
             <div>
                 <InputBox testID="test-input" onChange={(text) => this.getTextOfInputBox(text)}></InputBox>
-                <Button testID="test-btn" type="round">{inputText}</Button>
+                <Button testID="test-btn" type="round" onClick={() => {}}>{inputText}</Button>
             </div>
         )}
 

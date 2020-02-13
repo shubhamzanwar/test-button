@@ -1,7 +1,5 @@
 import React from 'react';
 import {Container} from './index';
-import {Button} from '../Button'
-import {InputBox} from '../InputBox'
 import { render, fireEvent } from '@testing-library/react';
 
 
