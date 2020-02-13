@@ -23,7 +23,7 @@ describe('The container component',()=>{
         mockAxiosGet.mockResolvedValue({data: {initialText:"unicorn"}});
         const { getByTestId } = render(<Container testId='test-cntner' testIdButton='test-btn' testIdTextBox='test-input'/>);
         expect(mockAxiosGet).toHaveBeenCalledWith(url.url);
-        await wait(() => 
+        await setImmediate(() => 
             expect(getByTestId('test-input').value).toBe('unicorn')
         );
     });
