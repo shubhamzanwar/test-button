@@ -11,7 +11,7 @@ class Container extends Component {
 
     async componentDidMount() {
         const {data} = await Axios.get(EXTERNAL_API);
-        this.setState({text: data.initialValue});
+        this.setState({text: data.initialText});
     }
 
     onChange=(inputTextValue)=>{

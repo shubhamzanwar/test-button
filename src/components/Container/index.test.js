@@ -5,7 +5,7 @@ import Container from '../Container';
 import {EXTERNAL_API} from '../../constants/urls';
 
 jest.mock('axios', () => ({
-    get: jest.fn(() => ({data: {initialValue: "test-initial-value"}}))
+    get: jest.fn(() => ({data: {initialText: "test-initial-value"}}))
 }));
 
 afterEach(cleanup);
