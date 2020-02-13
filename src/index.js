@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import Container from './components/Container';
 import Button from './components/Button/index'
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<Container />, document.getElementById('root'));
 

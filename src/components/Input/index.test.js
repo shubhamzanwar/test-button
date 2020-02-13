@@ -8,4 +8,11 @@ describe('the input component', () => {
 
         expect(asFragment()).toMatchSnapshot();
     });
+    it('should pass its text to the prop when the input is changed', () => {
+        const mockOnChange = jest.fn();
+        const { getByTestId } = render(<Input testID="test-input" onChange={mockOnChange}/>);
+
+        fireEvent.change(getByTestId("test-input"), {target: {value: "123"}});
+        expect(mockOnChange).toHaveBeenCalledWith("123");
+    })
 });
