@@ -9,11 +9,16 @@ exports[`The TextBoxContainer Component should render correctly 1`] = `
         type="text"
       />
     </div>
-    <button
-      data-testid="test-btn"
+    <div
+      class="componentButton"
     >
-       clicked 0 times
-    </button>
+      <button
+        data-testid="test-btn"
+        message=""
+      >
+         clicked 0 times
+      </button>
+    </div>
   </div>
 </DocumentFragment>
 `;
