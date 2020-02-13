@@ -1,32 +1,30 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from '../Button';
 import TextBox from '../TextBox';
 import axios from 'axios';
-class Container extends Component {
-    state={
-        text:''
+
+const Container = (props) => {
+    const {testId, testIdTextBox, testIdButton} = props;
+    const [text, setText] = useState('');
+
+    const onChange=(inputTextValue)=>{
+        setText(inputTextValue)
     }
 
-    onChange=(inputTextValue)=>{
-        this.setState({
-            text:inputTextValue
-        })
-    }
-    async componentDidMount (){
-        const intialContent = await axios.get('https://api.myjson.com/bins/1grobk');
-        this.setState({
-            text: intialContent.data.initialText
-        });
-    }
-    render() {
-        const {testId,testIdButton,testIdTextBox}=this.props;
-        return (
-            <div data-testid={testId}>
-                <TextBox value={this.state.text} onChange={(this.onChange)} testId={testIdTextBox} />
-                <Button text={this.state.text} buttonType="round" testId={testIdButton}/>
+    useEffect(() => {
+        async function fetchData() {
+            const intialContent = await axios.get('https://api.myjson.com/bins/1grobk');
+            setText(intialContent.data.initialText);
+        }
+        fetchData();
+    },[]);
+
+    return(
+        <div data-testid={testId}>
+                <TextBox value={text} onChange={(onChange)} testId={testIdTextBox} />
+                <Button text={text} buttonType="round" testId={testIdButton}/>
             </div>
-        )
-    }
+    );
 }
 
 export default Container

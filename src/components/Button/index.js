@@ -1,29 +1,21 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import * as styles from './index.css';
 
-class Button extends Component {
+const Button = (props) => {
+  const {text, buttonType, testId, click} = props;
+  const [count, setCount] = useState(0);
 
-  state={
-    count:0
+  const countHandler = () => {
+    click();
+    setCount(count + 1);
   }
-
-  countHandler = () => {
-    const {click}=this.props;
-    this.setState({
-      count:this.state.count + 1
-    },
-    click);
-  }
-
-  render() {
-    const {text,buttonType,testId}=this.props;
-    return (
-      <button className={buttonType === 'rect' ? styles.rect : styles.round} data-testid={testId} onClick={() => this.countHandler()}>
-        {text} clicked {this.state.count} times.
+  return (
+    <button className={buttonType === 'rect' ? styles.rect : styles.round} data-testid={testId} onClick={() => countHandler()}>
+        {text} clicked {count} times.
       </button> 
-    )
-  }
-}
+  )
+};
+
 
 export default Button;
 
