@@ -1,36 +1,33 @@
-import React, { Component } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import Button from '../Button';
 import TextBox from '../TextBox';
 import axios from 'axios';
 import url from '../../constants/url'
 
-class Container extends Component {
-    state={
-        text:''
-    }
+const Container = (props) => {
+    
+    const [text, setText] = useState('');
 
-    componentDidMount = async() => {
-        const res = await axios.get(url.initialTextLink);
-        this.setState({
-            text: res.data.initialText
-        })
-    }
+    useEffect(() => {
+        const res = axios.get(url.initialTextLink);
+        setText(
+            res.data.initialText
+        )
+    }, []) 
 
-    onChange=(inputTextValue)=>{
-        this.setState({
-            text:inputTextValue
-        })
-    }
-
-    render() {
-        const {testId,testIdButton,testIdTextBox}=this.props;
-        return (
-            <div data-testid={testId}>
-                <TextBox text={this.state.text} onChange={(this.onChange)} testId={testIdTextBox} />
-                <Button text={this.state.text} buttonType="round" testId={testIdButton}/>
-            </div>
+    const onChange=(inputTextValue)=>{
+        setText(
+            inputTextValue
         )
     }
+
+        const {testId,testIdButton,testIdTextBox}=props;
+        return (
+            <div data-testid={testId}>
+                <TextBox text={text} onChange={onChange} testId={testIdTextBox} />
+                <Button text={text} buttonType="round" testId={testIdButton}/>
+            </div>
+        )
 }
 
 export default Container
