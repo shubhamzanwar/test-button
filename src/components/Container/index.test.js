@@ -1,7 +1,7 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, wait } from '@testing-library/react';
 import Container from '../Container';
-
+import axios from 'axios';
 describe('The container component',()=>{
     it('should check if the button component works',()=>{
         const {asFragment}=render(<Container testId='test-cntner'/>)
@@ -16,5 +16,14 @@ describe('The container component',()=>{
 
        expect(getByTestId('test-btn')).toHaveTextContent('Bhumika clicked 0 times.');
 
-    })
+    });
+    it('should display the content from the api in the input', async() => {
+        const mockAxiosGet = jest.spyOn(axios, 'get');
+        mockAxiosGet.mockResolvedValue({data: {initialText:"unicorn"}});
+        const { getByTestId } = render(<Container testId='test-cntner' testIdButton='test-btn' testIdTextBox='test-input'/>);
+        expect(mockAxiosGet).toHaveBeenCalled();
+        await wait(() => 
+            expect(getByTestId('test-input').value).toBe('unicorn')
+        );
+    });
 })
