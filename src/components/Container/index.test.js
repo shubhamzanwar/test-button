@@ -1,6 +1,14 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import axios from 'axios';
+import { render, fireEvent, cleanup, wait } from '@testing-library/react';
 import Container from '../Container';
+import {EXTERNAL_API} from '../../constants/urls';
+
+jest.mock('axios', () => ({
+    get: jest.fn(() => ({data: {initialValue: "test-initial-value"}}))
+}));
+
+afterEach(cleanup);
 
 describe('The container component',()=>{
     it('should check if the button component works',()=>{
@@ -16,5 +24,17 @@ describe('The container component',()=>{
 
        expect(getByTestId('test-btn')).toHaveTextContent('Bhumika clicked 0 times.');
 
+    });
+
+    it('should make an api call and pre-fill the value in the input and button', async () => {
+        const {getByTestId}=render(<Container testId='test-cntner' testIdButton='test-btn' testIdTextBox='123'/>);
+        const input = getByTestId('123');
+        const button = getByTestId('test-btn');
+        
+        await wait(() => {
+            expect(axios.get).toHaveBeenCalledWith(EXTERNAL_API);
+            expect(input.value).toEqual('test-initial-value');
+            expect(button).toHaveTextContent(/test-initial-value/);
+        });
     })
 })
