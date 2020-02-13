@@ -1,9 +1,9 @@
 import React from 'react'
 
-function TextBox({testId, onChange}) {
+function TextBox({testId, onChange, value}) {
     return (
         <div>
-            <input type="text" data-testid={testId} onChange={(e)=>onChange(e.target.value)}></input>
+            <input type="text" value={value} data-testid={testId} onChange={(e)=>onChange(e.target.value)}></input>
         </div>
     )
 }

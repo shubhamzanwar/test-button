@@ -11,6 +11,11 @@ describe('The TextBox component',()=>{
         expect(asFragment()).toMatchSnapshot();
     });
 
+    it('should set the value received from the props', () => {
+        const {getByTestId}=render(<TextBox testId="123" value="test-value" />);
+        expect(getByTestId("123").value).toEqual('test-value');
+    })
+
     it('should pass the correct input when input is provided',()=>{
         const changeHandler=jest.fn();
         const {getByTestId}=render(<TextBox testId="123" onChange={changeHandler}/>);
