@@ -24,7 +24,10 @@ describe('The container component',()=>{
     it('should display the content from axios.get in the button', async()=>{
         const {getByTestId}=render(<Container testId='test-cntner' testIdButton='test-btn' testIdTextBox='123'/>)
         expect(axios.get).toHaveBeenCalledWith(url.initialTextLink);
-        await wait(() => expect(getByTestId('test-btn')).toHaveTextContent('unicorn'));
+        await wait(() => {
+            expect(getByTestId('test-btn')).toHaveTextContent('unicorn')
+            expect(getByTestId('123').value).toBe('unicorn')
+        });
 
     })
 
