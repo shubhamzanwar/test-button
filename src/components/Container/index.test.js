@@ -2,6 +2,7 @@ import React from 'react';
 import { render, fireEvent, wait } from '@testing-library/react';
 import Container from '../Container';
 import axios from 'axios';
+import url from '../../constants/urls';
 describe('The container component',()=>{
     it('should check if the button component works',()=>{
         const {asFragment}=render(<Container testId='test-cntner'/>)
@@ -21,7 +22,7 @@ describe('The container component',()=>{
         const mockAxiosGet = jest.spyOn(axios, 'get');
         mockAxiosGet.mockResolvedValue({data: {initialText:"unicorn"}});
         const { getByTestId } = render(<Container testId='test-cntner' testIdButton='test-btn' testIdTextBox='test-input'/>);
-        expect(mockAxiosGet).toHaveBeenCalled();
+        expect(mockAxiosGet).toHaveBeenCalledWith(url.url);
         await wait(() => 
             expect(getByTestId('test-input').value).toBe('unicorn')
         );
