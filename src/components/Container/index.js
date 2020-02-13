@@ -26,7 +26,7 @@ class Container extends Component {
         const {testId,testIdButton,testIdTextBox}=this.props;
         return (
             <div data-testid={testId}>
-                <TextBox onChange={(this.onChange)} testId={testIdTextBox} />
+                <TextBox text={this.state.text} onChange={(this.onChange)} testId={testIdTextBox} />
                 <Button text={this.state.text} buttonType="round" testId={testIdButton}/>
             </div>
         )

@@ -8,6 +8,7 @@ exports[`The container component should be rendered correctly 1`] = `
     <div>
       <input
         type="text"
+        value=""
       />
     </div>
     <button>
