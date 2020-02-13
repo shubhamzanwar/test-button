@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The TextBoxContainer Component should render correctly 1`] = `
+<DocumentFragment>
+  <div>
+    <div>
+      <input
+        data-testid="test-input"
+        type="text"
+      />
+    </div>
+    <button
+      data-testid="test-btn"
+    >
+       clicked 0 times
+    </button>
+  </div>
+</DocumentFragment>
+`;

@@ -5,7 +5,7 @@ exports[`the button component should render a circle shaped button when type is 
   <button
     data-testid="test-btn"
   >
-    Test text
+    sarvani clicked 2 times
   </button>
 </DocumentFragment>
 `;
@@ -15,7 +15,7 @@ exports[`the button component should render a rectangle shaped button when type 
   <button
     data-testid="test-btn"
   >
-    Test text
+    sarvani clicked 2 times
   </button>
 </DocumentFragment>
 `;
@@ -25,7 +25,7 @@ exports[`the button component should render correctly 1`] = `
   <button
     data-testid="test-btn"
   >
-    Test text
+    sarvani clicked 2 times
   </button>
 </DocumentFragment>
 `;
