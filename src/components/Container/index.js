@@ -1,22 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Button from '../Button';
 import TextBox from '../TextBox';
-import axios from 'axios';
-import url from '../../constants/url'
+import {useInput} from '../../hooks/useInput'
 
 const Container = (props) => {
     
-    const [text, setText] = useState('');
-
-    useEffect(() => {
-        const asyncFunc = async() => {
-        const res = await axios.get(url.initialTextLink);
-        setText(
-            res.data.initialText
-        )
-        }
-        asyncFunc();
-    }, []) 
+    const [text, setText] = useInput()
 
     const onChange=(inputTextValue)=>{
         setText(

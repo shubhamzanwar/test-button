@@ -22,16 +22,16 @@ describe('the button component', () => {
 
   it('should render corrctly when the type:rect is passed to the component', () => {
     
-    const { buttonType } = render(<Button testID="test-btn" buttonType="rect" />);
+    const { asFragment } = render(<Button testID="test-btn" buttonType="rect" />);
 
-    expect(buttonType).toMatchSnapshot();
+    expect(asFragment).toMatchSnapshot();
   });
 
   it('should render corrctly when the type:round is passed to the component', () => {
     const onClickMock = jest.fn();
-    const { buttonType } = render(<Button testID="test-btn" buttonType="round" onClick={onClickMock} />);
+    const { asFragment } = render(<Button testID="test-btn" buttonType="round" onClick={onClickMock} />);
 
-    expect(buttonType).toMatchSnapshot();
+    expect(asFragment).toMatchSnapshot();
 
   });
 

@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`the button component should render corrctly when the type:rect is passed to the component 1`] = `undefined`;
+exports[`the button component should render corrctly when the type:rect is passed to the component 1`] = `[Function]`;
 
-exports[`the button component should render corrctly when the type:round is passed to the component 1`] = `undefined`;
+exports[`the button component should render corrctly when the type:round is passed to the component 1`] = `[Function]`;
 
 exports[`the button component should render correctly 1`] = `
 <DocumentFragment>
