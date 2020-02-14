@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from '../Button';
 import TextBox from '../TextBox';
 import axios from 'axios';
@@ -9,10 +9,13 @@ const Container = (props) => {
     const [text, setText] = useState('');
 
     useEffect(() => {
-        const res = axios.get(url.initialTextLink);
+        const asyncFunc = async() => {
+        const res = await axios.get(url.initialTextLink);
         setText(
             res.data.initialText
         )
+        }
+        asyncFunc();
     }, []) 
 
     const onChange=(inputTextValue)=>{
@@ -25,7 +28,7 @@ const Container = (props) => {
         return (
             <div data-testid={testId}>
                 <TextBox text={text} onChange={onChange} testId={testIdTextBox} />
-                <Button text={text} buttonType="round" testId={testIdButton}/>
+                <Button text={text} buttonType="round" testId={testIdButton} click={() => {}}/>
             </div>
         )
 }
