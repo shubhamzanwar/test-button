@@ -28,4 +28,14 @@ describe('the useInput hook', () => {
         });
         expect(result.current[0]).toEqual('newValue');
     });
+    it('should update the disabled to false when the api call is done', async() => {
+        const mockAxios = jest.spyOn(axios,'get');
+        mockAxios.mockResolvedValue({data:{initialText:'123'}});
+        const {
+            result,
+            waitForNextUpdate
+        } = renderHook(() => useInput());
+        await waitForNextUpdate();
+        expect(result.current[2]).toBe(false);
+    });
 })
